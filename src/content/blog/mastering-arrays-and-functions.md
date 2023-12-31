@@ -1,6 +1,6 @@
 ---
 author: Aayush Shukla
-pubDatetime: 2023-12-31T17:00:00Z
+pubDatetime: 2023-12-31T19:37:00Z
 title: Mastering C Programming - Part 2 - Arrays Unveiled
 slug: mastering-arrays
 featured: false
