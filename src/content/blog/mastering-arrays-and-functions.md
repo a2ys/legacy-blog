@@ -12,7 +12,7 @@ description:
   A dive into Arrays in C
 ---
 
-### Part of a series on [Mastering C Programming](http://blog.a2ys.dev/tags/mastering-c)
+### Part of a series on [Mastering C Programming](/tags/mastering-c)
 
 Welcome back to our journey into the world of C programming! In this installment, we'll unravel Arrays, key building blocks that add depth and versatility to your coding arsenal.
 
@@ -158,6 +158,35 @@ A few operations which you'll find useful are given for your reference.
 - `strcpy(str2, str1)`: Since in C, strings are arrays of characters, copying of strings cannot simply be done using the assignment operator. You need to use the `strcpy()` function which copies `str2` into `str1`. This makes it one of the most important functions you'll use in C. Note that the size of str2 should be large enough to store the copied string.
 - `strcmp(str1, str2)`: This compares the strings `str1` and `str2`. If all characters are matching (the compiler encountered the null character, ASCII Value 0 in both the strings), it will give the value 0. If there are different strings, the compiler will simply give the difference of the ASCII values of the different characters, the first ASCII value is taken from `str1`, and the second from `str2`. I'll give you a task, try to find what happens if the lengths of `str1` and `str2` are different.
 
+## Bits of knowledge: Getting the size of arrays
+
+There is no direct way to get the size of the array whose length is unknown initially, but there's a turnaround. You can use the `sizeof()` function to get the size of the array.
+
+Suppose you have a 64-bit processor, then the size of an integer corresponding to your processor will be 4 bits (or 32 bytes). So, if you store 5 integers, it will take up 20 bits of memory, and 10 integers will take up 40 bits of memory. So, if there are n integers stored on your machine, they will take up n*4 bytes of storage combined.
+
+Arrays will be no different. So, if an array of integers contain an unknown number of elements, say n, then the array will take up n\*4 bits of space. But you know that an integer takes up 4 bits of space, so the number of elements in the array will be the memory taken up by the array of integers divided by the memory taken up by a single integer value for your machine; in the current case, (n\*4)/4 which equals n, the length of the array!
+
+This can be achieved in a C program with the help of `sizeof()` function.
+
+```c
+int size = sizeof(int); // This will give you the size of an integer according to your processor.
+```
+
+When you use the `sizeof()` function and give the array as a parameter, it will return the size of the array, and we can divide it by the size of an element inside to get the length of the array.
+
+```c
+int array[] = {1, 2, 3, 4, 5};
+int length = sizeof(array) / sizeof(array[0])
+```
+
+This is the syntax we use to calculate the length of the array. **Your task is to do the same task with an empty array**.
+
+Note that we can also use `sizeof(int)` instead of using `sizeof(array[0])`, because we know that the array contains integer values, however the above syntax is for general use and is preferred over hardcoding the data type.
+
+## Conclusion
+
 In this focused exploration of arrays, you've gained insights into the power and versatility that arrays bring to C programming. Whether organizing data linearly or in a grid, arrays are indispensable tools in your programming toolkit.
 
-Stay tuned for more deep dives into the wonders of C programming in our continued journey!
+## Next Article
+
+The next article focuses on Functions in C, where you'll get to know all about Functions in the C language. You can get to the next article by clicking [here](/posts/).

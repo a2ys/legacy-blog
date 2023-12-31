@@ -12,13 +12,15 @@ description:
   A dive into the C Programming Fundamentals
 ---
 
-### Part of a series on [Mastering C Programming](http://blog.a2ys.dev/tags/mastering-c)
+### Part of a series on [Mastering C Programming](/tags/mastering-c)
 
 Welcome to the exciting world of C programming! Whether you're a budding programmer or looking to strengthen your foundation, understanding the fundamentals is the key to mastering this versatile language.
 
 This blog article will be a long one, but covers all the fundamentals of the C language.
 
 Once you finish this article, be sure to practice some questions from [Questions on Fundamentals](https://github.com/a2ys/learning-cpp?tab=readme-ov-file#fundamentals) present on my GitHub to test and strengthen your understanding.
+
+**I recommend you to run the code snippets provided, and play with them as you go through this blog and other blogs, as playing with the code is the most important part of learning to code.**
 
 You can read the blogs at your desired pace, and at your desired place, be it on the bed, on a chair or on a **porcelain throne**. _(if you get the reference XD)_
 

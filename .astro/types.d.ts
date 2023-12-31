@@ -175,6 +175,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
+"functions-and-variable-scopes.md": {
+	id: "functions-and-variable-scopes.md";
+  slug: "mastering-functions";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 "learning-c.md": {
 	id: "learning-c.md";
   slug: "the-basics-of-c";
