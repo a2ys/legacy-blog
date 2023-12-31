@@ -85,7 +85,7 @@
         background-color: theme('colors.bg.body');
         color: theme('colors.text.body');
         /* base font-size 1px larger for better visibility */
-        font-size: 1.125em;
+        font-size: 1em;
         line-height: 1.85;
         scroll-behavior: smooth;
     }
@@ -135,7 +135,7 @@
         color: theme('colors.text.code');
         padding: 0.125rem 0.25rem;
         border-radius: 0.25rem;
-        font-size: 0.875em;
+        font-size: 1em;
         font-weight: 600;
         border: 1px solid theme('colors.border.code');
         margin-bottom: 1.25em;
