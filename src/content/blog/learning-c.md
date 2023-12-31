@@ -1,16 +1,18 @@
 ---
 author: Aayush Shukla
 pubDatetime: 2023-12-31T15:00:00Z
-title: Mastering the Basics of C
-slug: mastering-the-basics-of-c
+title: Mastering C Programming - Part 1 - The Basics
+slug: the-basics-of-c
 featured: true
 draft: false
 tags:
-  - c
+  - mastering-c
   - programming-tutorials
 description:
-  Mastering the Basics of C - A dive into the C Programming Fundamentals
+  A dive into the C Programming Fundamentals
 ---
+
+### Part of a series on [Mastering C Programming](http://blog.a2ys.dev/tags/mastering-c)
 
 Welcome to the exciting world of C programming! Whether you're a budding programmer or looking to strengthen your foundation, understanding the fundamentals is the key to mastering this versatile language.
 
@@ -441,3 +443,7 @@ This minimalistic program introduces key elements, including the `#include` dire
 This lays the foundation for your journey into the world of C programming. As you delve deeper into C programming, these tools will become indispensable; you'll find yourself equipped with the tools to tackle more complex challenges in the language.
 
 So, welcome to the world of C programming!
+
+## Next Article
+
+The next article is on Arrays in C, where you'll get to know all about arrays in the C language. You can get to the next article by clicking [here](/posts/mastering-arrays).

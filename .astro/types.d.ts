@@ -175,107 +175,16 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"adding-new-post.md": {
-	id: "adding-new-post.md";
-  slug: "adding-new-posts-in-astropaper-theme";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"astro-paper-2.md": {
-	id: "astro-paper-2.md";
-  slug: "astro-paper-2";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"astro-paper-3.md": {
-	id: "astro-paper-3.md";
-  slug: "astro-paper-v3";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"customizing-astropaper-theme-color-schemes.md": {
-	id: "customizing-astropaper-theme-color-schemes.md";
-  slug: "customizing-astropaper-theme-color-schemes";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"dynamic-og-images.md": {
-	id: "dynamic-og-images.md";
-  slug: "dynamic-og-image-generation-in-astropaper-blog-posts";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"example-draft-post.md": {
-	id: "example-draft-post.md";
-  slug: "example-draft-post";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-add-an-estimated-reading-time.md": {
-	id: "how-to-add-an-estimated-reading-time.md";
-  slug: "how-to-add-estimated-reading-time";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-configure-astropaper-theme.md": {
-	id: "how-to-configure-astropaper-theme.md";
-  slug: "how-to-configure-astropaper-theme";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-connect-astro-paper-blog-with-forestry-cms.md": {
-	id: "how-to-connect-astro-paper-blog-with-forestry-cms.md";
-  slug: "how-to-connect-astro-paper-blog-with-forestry-cms";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"how-to-update-dependencies.md": {
-	id: "how-to-update-dependencies.md";
-  slug: "how-to-update-dependencies";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
 "learning-c.md": {
 	id: "learning-c.md";
-  slug: "mastering-the-basics-of-c";
+  slug: "the-basics-of-c";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
-"portfolio-website-development.md": {
-	id: "portfolio-website-development.md";
-  slug: "how-do-i-develop-my-portfolio-and-blog";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"predefined-color-schemes.md": {
-	id: "predefined-color-schemes.md";
-  slug: "predefined-color-schemes";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"tailwind-typography.md": {
-	id: "tailwind-typography.md";
-  slug: "tailwind-typography";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".md"] };
-"terminal-development.md": {
-	id: "terminal-development.md";
-  slug: "how-do-i-develop-my-terminal-portfolio-website-with-react";
+"mastering-arrays-and-functions.md": {
+	id: "mastering-arrays-and-functions.md";
+  slug: "mastering-arrays";
   body: string;
   collection: "blog";
   data: InferEntrySchema<"blog">
