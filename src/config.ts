@@ -1,12 +1,50 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+import type { Site, SocialObjects } from "./types";
 
-export const SITE_TITLE = "Aayush Shukla";
-export const SITE_DESCRIPTION =
-  "Welcome to my blog! I write about my personal experineces.";
-export const TWITTER_HANDLE = "@unreal_sapien";
-export const MY_NAME = "Aayush Shukla";
+export const SITE: Site = {
+  website: "https://a2ys.dev/", // replace this with your deployed domain
+  author: "Aayush Shukla",
+  desc: "A minimal blog featuring me sharing knowledge.",
+  title: "Aayush Shukla",
+  ogImage: "og.jpg",
+  lightAndDarkMode: true,
+  postPerPage: 4,
+};
 
-// setup in astro.config.mjs
-const BASE_URL = new URL(import.meta.env.SITE);
-export const SITE_URL = BASE_URL.origin;
+export const LOCALE = {
+  lang: "en", // html lang code. Set this empty and default will be "en"
+  langTag: ["en-EN"], // BCP 47 Language Tags. Set this empty [] to use the environment default
+} as const;
+
+export const LOGO_IMAGE = {
+  enable: false,
+  svg: true,
+  width: 216,
+  height: 46,
+};
+
+export const SOCIALS: SocialObjects = [
+  {
+    name: "Github",
+    href: "https://github.com/a2ys",
+    linkTitle: ` ${SITE.title} on GitHub`,
+    active: true,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/unreal_sapien",
+    linkTitle: `${SITE.title} on Twitter`,
+    active: true,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/oreus",
+    linkTitle: `${SITE.title} on LinkedIn`,
+    active: true,
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/_cococolastic_",
+    linkTitle: `${SITE.title} on Instagram`,
+    active: true,
+  },
+];
