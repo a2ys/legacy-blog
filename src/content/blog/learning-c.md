@@ -441,4 +441,3 @@ This minimalistic program introduces key elements, including the `#include` dire
 This lays the foundation for your journey into the world of C programming. As you delve deeper into C programming, these tools will become indispensable; you'll find yourself equipped with the tools to tackle more complex challenges in the language.
 
 So, welcome to the world of C programming!
-
