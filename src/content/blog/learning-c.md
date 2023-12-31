@@ -1,6 +1,6 @@
 ---
 author: Aayush Shukla
-pubDatetime: 2023-12-31T06:30:00Z
+pubDatetime: 2023-12-31T15:00:00Z
 title: Mastering the Basics of C
 slug: mastering-the-basics-of-c
 featured: true
