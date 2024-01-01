@@ -20,7 +20,7 @@ Once you finish this article, be sure to practice some questions from [Questions
 
 Do what is told in questions 1 and 2 above, as you'll encounter an issue when you forget to specify the arguments as instructed.
 
-## Table of contents
+## Table of Contents
 
 ## Functions
 
@@ -70,20 +70,6 @@ void greet() {
 
 The `greet()` function just prints a message, and does not return anything, as it is of a `void` return type.
 
-A simple thing to note is that the values passed into a function on calling are called parameters, and the values used in the function definition are called arguments. Taking reference from the previous examples,
-
-```c
-int add(int num1, num2)
-```
-
-Here, `num1` and `num2` are function arguments.
-
-```c
-add(10, 20);
-```
-
-Here, 10 and 20 are the parameters.
-
 ### Call by Value and Call by Reference
 
 In C, you can call a function requiring parameters in two ways, either by providing the value directly, or by a reference to the variable containing the value. You'll learn about references when you study pointers.
@@ -132,6 +118,22 @@ int main() {
 
 First of all, the major difference lies in the function definition. In the function arguments, we ask for a pointer (you'll get to know about this soon) via the dereference operator `*`, and then dereference the value from the pointer to modify the value in-place. This program achieves the same thing as the previous program.
 
+### Bits of knowledge: Arguments and Parameters
+
+A simple thing to note is that the values passed into a function on calling are called parameters, and the values used in the function definition are called arguments. Taking reference from the previous examples,
+
+```c
+int add(int num1, num2)
+```
+
+Here, `num1` and `num2` are function arguments.
+
+```c
+add(10, 20);
+```
+
+Here, 10 and 20 are the parameters.
+
 ### Function Overloading
 
 Function overloading is a feature in programming languages that allows multiple functions with the same name to be defined, but with different parameters or types. The compiler or interpreter differentiates between these functions based on the number or types of their parameters. This enables programmers to use a familiar and intuitive naming convention for functions that perform similar tasks but operate on different data types or have different parameter lists.
@@ -149,12 +151,12 @@ The following program illustrates function overloading. It is written in C++.
 ```cpp
 #include <cstdio> // Include the C standard I/O header for printf
 
-// Function with two integer parameters
+// Function with two integer arguments
 void add(int a, int b) {
     printf("Sum of two integers: %d\n", a + b);
 }
 
-// Function with two double parameters
+// Function with two double arguemnts
 void add(double a, double b) {
     printf("Sum of two doubles: %lf\n", a + b);
 }
@@ -171,9 +173,9 @@ In this example, the add function is overloaded with two versions—one that tak
 
 ## Recursive Functions
 
-Recursive functions are a special type of functions. Recursive functions call itself in the function definition. They are used to simplify the functions, which without recursion, would either have required a simplifiable loop within the function definition, or might have been a long task to do. I know this definition seems overwhelming. In simple terms, a recursive function calls itself in the function definition, and is used to simplify program logic. Implementing them is a rather bigger deal than defining them. I'll write a separate article focusing on Recursion soon, which will make it clear to you.
+Recursive functions are a special type of functions. Recursive functions call itself in the function definition. They are used to simplify the functions, which without recursion, would either have required a simplifiable loop within the function definition, or might have been a long task to do. I know this definition seems overwhelming.
 
-The most basic recursive function is when you want to calculate the Factorial of a number.
+In simple terms, a recursive function calls itself in the function definition, and is used to simplify program logic. Implementing the logic is a rather bigger deal than defining them. I highly recomend you to visit [my article on recursion](/posts/recursive-functions) to completely understand the concept behind recursion! For now, I'll just brief you with the concept of recursion taking the help of the Factorial.
 
 Suppose you want to calculate the factorial of the number 4.
 

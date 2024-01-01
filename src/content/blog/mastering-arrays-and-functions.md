@@ -20,7 +20,7 @@ Arrays are not something unique to C. They are present in every language, in fac
 
 Once you finish this article, be sure to practice some questions from [Questions on Arrays](https://github.com/a2ys/learning-cpp?tab=readme-ov-file#arrays) present on my GitHub to test and strengthen your understanding.
 
-## Table of contents
+## Table of Contents
 
 ## One-Dimensional Arrays
 
@@ -189,4 +189,4 @@ In this focused exploration of arrays, you've gained insights into the power and
 
 ## Next Article
 
-The next article focuses on Functions in C, where you'll get to know all about Functions in the C language. You can get to the next article by clicking [here](/posts/).
+The next article focuses on Functions in C, where you'll get to know all about Functions in the C language. You can get to the next article by clicking [here](/posts/mastering-functions).

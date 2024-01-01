@@ -26,7 +26,7 @@ You can read the blogs at your desired pace, and at your desired place, be it on
 
 > Since you might have already studied about the core concepts previously, I'll just give a brief description about the core concepts, and focus more on the syntax. When shifting to C++, the core concepts, the logic building and the syntax all remain almost the same, it's just a few additions that make C++ better.
 
-## Table of contents
+## Table of Contents
 
 ## Variables and Reserved Words
 
