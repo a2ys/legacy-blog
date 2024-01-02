@@ -8,8 +8,7 @@ draft: false
 tags:
   - mastering-c
   - programming-tutorials
-description:
-  A dive into the C Programming Fundamentals
+description: A dive into the C Programming Fundamentals
 ---
 
 ### Part of a series on [Mastering C Programming](/tags/mastering-c)
@@ -24,7 +23,7 @@ Once you finish this article, be sure to practice some questions from [Questions
 
 You can read the blogs at your desired pace, and at your desired place, be it on the bed, on a chair or on a **porcelain throne**. _(if you get the reference XD)_
 
-> Since you might have already studied about the core concepts previously, I'll just give a brief description about the core concepts, and focus more on the syntax. When shifting to C++, the core concepts, the logic building and the syntax all remain almost the same, it's just a few additions that make C++ better.
+Since you might have already studied about the core concepts previously, I'll just give a brief description about the core concepts, and focus more on the syntax. When shifting to C++, the core concepts, the logic building and the syntax all remain almost the same, it's just a few additions that make C++ better.
 
 ## Table of Contents
 
@@ -116,38 +115,38 @@ int main() {
 Operators are the building blocks of expressions in C. Understanding operator precedence ensures that expressions are evaluated in the correct order, preventing unexpected results. Following are all the operators with their precedence. You might know a few of them already, but take your time to get to know all of them.
 
 1. **Postfix operators:** `() [] -> . ++ --`
-    - Function call `()`
-    - Array subscript `[]`
-    - Member access operators `->` and `.`
-    - Post-increment `++` and post-decrement `--`
+   - Function call `()`
+   - Array subscript `[]`
+   - Member access operators `->` and `.`
+   - Post-increment `++` and post-decrement `--`
 2. **Unary operators:** `+ - ! ~ ++ -- (type) * & sizeof`
-    - Unary plus `+`
-    - Unary minus `-`
-    - Logical NOT `!`
-    - Bitwise NOT `~`
-    - Pre-increment `++` and pre-decrement `--`
-    - Type cast `(type)`
-    - Dereference `*`
-    - Address-of `&`
-    - Sizeof `sizeof`
+   - Unary plus `+`
+   - Unary minus `-`
+   - Logical NOT `!`
+   - Bitwise NOT `~`
+   - Pre-increment `++` and pre-decrement `--`
+   - Type cast `(type)`
+   - Dereference `*`
+   - Address-of `&`
+   - Sizeof `sizeof`
 3. **Multiplicative operators:** `* / %`
-    - Multiplication `*`
-    - Division `/`
-    - Modulus `%`
+   - Multiplication `*`
+   - Division `/`
+   - Modulus `%`
 4. **Additive operators:** `+ -`
-    - Addition `+`
-    - Subtraction `-`
+   - Addition `+`
+   - Subtraction `-`
 5. **Shift operators:** `<< >>`
-    - Left shift `<<`
-    - Right shift `>>`
+   - Left shift `<<`
+   - Right shift `>>`
 6. **Relational operators:** `< <= > >=`
-    - Less than `<`
-    - Less than or equal to `<=`
-    - Greater than `>`
-    - Greater than or equal to `>=`
+   - Less than `<`
+   - Less than or equal to `<=`
+   - Greater than `>`
+   - Greater than or equal to `>=`
 7. **Equality operators:** `== !=`
-    - Equal to `==`
-    - Not equal to `!=`
+   - Equal to `==`
+   - Not equal to `!=`
 8. **Bitwise AND operator:** `&`
 9. **Bitwise XOR operator:** `^`
 10. **Bitwise OR operator:** `|`
