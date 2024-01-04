@@ -1,10 +1,10 @@
 ---
 author: Aayush Shukla
-pubDatetime: 2024-01-03T22:14:00Z
-title: Mastering C Programming - Part 4 - Navigating Computers with Pointers
+pubDatetime: 2024-01-04T20:33:00Z
+title: Mastering C Programming - Part 4 - Navigating through Memory with Pointers
 slug: navigating-wth-pointers
-featured: false
-draft: true
+featured: true
+draft: false
 tags:
   - mastering-c
   - programming-tutorials
@@ -39,7 +39,7 @@ Here, the dereference operator `*` signifies that the variable `num` is not a no
 int* i;
 ```
 
-Putting the dereference operator `*` over `int` or the variable name does not hold any significance, it's up to you; both mean the same thing,
+Putting the dereference operator `*` over `int` or the variable name does not hold any significance, it is your personal preference; both mean the same thing,
 
 > i is a pointer to an int.
 
@@ -137,3 +137,180 @@ This line increments the pointer to the next pointer. The explanation might be i
 This whole thing is explained in a 12 year old question on StackOverflow, but it is totally worth it. I highly recomend you to read the post and the discussion! Here's the [link](https://stackoverflow.com/questions/7886196/c-pointer-1-meaning).
 
 So, in short, `*(ptr + 1)` gives you the second element. In the same way, `*(ptr + 2)` will give you the third element, and so on.
+
+Now, if you go out of bounds from the array, and try to print the values, we get some interesting values. They are the values which are present in the computer's memory at that given memory location during the time of execution. Those values are highly unpredictable, and it is highly discouraged to go out of bounds during the execution; C does not perform boundary checks, so it's the programmer's responsibility to ensure that pointer arithmetic stays within the valid range of the array.
+
+## Bits of knowledge: Void Pointers
+
+In our exploration of pointers, it's worth understanding `void` pointers. Unlike other pointers, a `void` pointer (`void *`) is like a wild card. It doesn't point to any specific data type; instead, it can point to anything. This makes it a really useful tool, especially in scenarios where the data type might vary.
+
+```c
+void printValue(void *ptr, char type) {
+    switch (type) {
+        case 'd':
+            printf("Integer Value: %d\n", *((int *)ptr));
+            break;
+        case 'f':
+            printf("Float Value: %f\n", *((float *)ptr));
+            break;
+        case 'c':
+            printf("Character Value: %c\n", *((char *)ptr));
+            break;
+        default:
+            printf("Unknown Data Type\n");
+    }
+}
+
+int main() {
+    int intValue = 0;
+    float floatValue = 3.14;
+    char charValue = 'A';
+
+    printValue(&intValue, 'd');
+    printValue(&floatValue, 'f');
+    printValue(&charValue, 'c');
+
+    return 0;
+}
+```
+
+In this example, the `printValue` function takes a `void` pointer and a character representing the data type. It then uses type casting to interpret the data correctly. This flexibility allows us to create functions that can handle multiple data types.
+
+## Dynamic Memory Allocation
+
+Dynamic memory allocation enables us to manage memory during program execution. We can reserve memory for variables, and also free memory whenever we need. Suppose you want to declare an integer pointer.
+
+```c
+int *ptr;
+
+ptr = (int *)malloc(sizeof(int));
+```
+
+This is the syntax you need to follow to allocate memory for an integer. Note that the memory allocated is stored in an integer pointer. In C, when you allocate memory using malloc, it returns a void pointer (`void *`). That's why we store it in a pointer variable. But when you assign it directly to an integer pointer, you lose type information. So you have to explicity cast it to an integer pointer to maintain type safety. Thus you use `(int *)` to cast the pointer returned by `malloc()` to point to an integer variable.
+
+But since you have assigned memory to a variable, you have to free the memory as well. You can do this by using the `free()` function. When you free the memory using `free`, the memory is deallocated, and the pointer becomes invalid. The following syntax will be followed to free the memory assigned to the integer pointer `ptr`.
+
+```c
+free(ptr);
+```
+
+The following program demostrates the use of `malloc()` and `free()`.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *dynamicArray;
+
+    dynamicArray = (int *)malloc(5 * sizeof(int));  // Allocating memory for 5 integers
+
+    // You can use dynamicArray as a regular array
+    dynamicArray[0] = 0;
+
+    free(dynamicArray);  // Don't forget to free the allocated memory
+
+    return 0;
+}
+```
+
+## Pointers and Functions
+
+Pointers can also be passed in as function arguments. Here's an example to demonstrate that.
+
+```c
+void square(int *num) {
+    *num = (*num) * (*num);
+}
+
+int main() {
+    int value = 5;
+
+    square(&value);
+
+    printf("Squared value: %d\n", value);
+
+    return 0;
+}
+```
+
+Here, the square function takes a pointer to an integer as an argument, and modifies the value in the memory location stored by the pointer. Here, we pass in the memory location of `value` as parameters and the function does its magic. This is also known as call by reference; you must have read this [here](/posts/mastering-functions#call-by-value-and-call-by-reference). I advise you to go and brush up this part there!
+
+## Bytes of knowledge
+
+### Passing Arrays into Functions
+
+You must have encountered array decay if you tried to solve the questions 1 and 2 from [Questions on Functions](https://github.com/a2ys/learning-cpp?tab=readme-ov-file#functions) from my GitHub and not following the instructions as given in the two questions. When you to pass an array into a function argument, the array is not passed, instead, a pointer to the first element of the array is passed.
+
+So,
+
+```c
+void printArray(int arr[])
+```
+
+Here, `arr` is not an array, instead it is a pointer to the first element passed into `arr` as parameters. So, all the information related to the array is lost, and what you get is only a pointer to the first element.
+
+So, in both the questions 1 and 2, you have to pass the size separately as the information about the array is lost when it is passed into the function as parameters.
+
+So, you have to always have the array `size` as an argument whenever you want to have the array itself as an argument in a function that requires arrays, just so you can be safe, and use the array when needed. So, a better and a more useful function signature will be,
+
+```c
+void printArray(int arr[], int size)
+```
+
+This time, you are also taking the size in as an argument, so that the array can be useful inside the function.
+
+You can also use the following syntax with explicit pointer notation for the array parameter.
+
+```c
+void printArray(int *arr, int size)
+```
+
+Both versions are commonly used, and the choice between them often comes down to coding style preferences.
+
+### Strings as Function Arguments
+
+When it comes to dealing with strings in C, things get interesting. Unlike other data types, strings are represented as arrays of characters, so you have to specify the data type `char *` when taking them in as arguments, like you did in arrays (`int *` in the last example).
+
+```c
+#include <stdio.h>
+
+void printString(const char *str) {
+    while (*str != '\0') {
+        printf("%c", *str);
+        str++;
+    }
+    printf("\n");
+}
+
+int main() {
+    char message[] = "Hello, World!";
+    printString(message);
+
+    return 0;
+}
+```
+
+In this example, the `printString` function takes a pointer to a constant character `const char *str`. The `const` keyword indicates that the function won't modify the contents of the string. If you don't use `const`, you could still represent strings using `char *`, but it is a good practice to use `const char *` for string literals to prevent unintended modifications and enhance code safety. The function iterates through the characters of the string until it encounters the null terminator (`'\0'`), printing each character along the way.
+
+### Double Pointers
+
+Another interesting concept is the use of double pointers (`**`). These pointers point to other pointers. While it might seem a bit confusing at first, double pointers become useful when dealing with dynamic memory allocation or two-dimensional arrays.
+
+```c
+int main() {
+    int value = 42;
+    int *ptr1 = &value;
+    int **ptr2 = &ptr1;
+
+    printf("Value: %d\n", **ptr2);
+
+    return 0;
+}
+```
+
+Here, `ptr2` is a double pointer pointing to the address of `ptr1`, which, in turn, points to the `value`. This extra layer of indirection provides a powerful way to manage memory and complex data structures.
+
+## Conclusion
+
+As we conclude pointers, you've must have gained some understanding about pointers and their applications in C programming. From basic declaration to their interaction with arrays and functions, pointers open up new dimensions in your coding journey.

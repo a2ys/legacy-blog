@@ -8,8 +8,7 @@ draft: false
 tags:
   - mastering-c
   - programming-tutorials
-description:
-  A dive into Arrays in C
+description: A dive into Arrays in C
 ---
 
 ### Part of a series on [Mastering C Programming](/tags/mastering-c)
@@ -101,9 +100,7 @@ Now, what will happen if miss declaring a value in the matrix, and try to print 
 int matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8}};
 ```
 
-When you try to print the missed value at `matrix[2][2]`, you'll get some absurd value. This is not some kind of error, but are a result of a fundamental feature of C. The same will happen when you try to print values from an unitialized array as well.
-
-You'll unravel this mystery when you study Pointers.
+When you try to print the missed value at `matrix[2][2]`, you'll get some absurd value. This is not some kind of error, but are a result of a fundamental feature of C. The same will happen when you try to print values from an unitialized array as well. This will be explained in the Pointers section.
 
 ## Strings
 
@@ -162,7 +159,7 @@ A few operations which you'll find useful are given for your reference.
 
 There is no direct way to get the size of the array whose length is unknown initially, but there's a turnaround. You can use the `sizeof()` function to get the size of the array.
 
-Suppose you have a 64-bit processor, then the size of an integer corresponding to your processor will be 4 bits (or 32 bytes). So, if you store 5 integers, it will take up 20 bits of memory, and 10 integers will take up 40 bits of memory. So, if there are n integers stored on your machine, they will take up n*4 bytes of storage combined.
+Suppose you have a 64-bit processor, then the size of an integer corresponding to your processor will be 4 bits (or 32 bytes). So, if you store 5 integers, it will take up 20 bits of memory, and 10 integers will take up 40 bits of memory. So, if there are n integers stored on your machine, they will take up n\*4 bytes of storage combined.
 
 Arrays will be no different. So, if an array of integers contain an unknown number of elements, say n, then the array will take up n\*4 bits of space. But you know that an integer takes up 4 bits of space, so the number of elements in the array will be the memory taken up by the array of integers divided by the memory taken up by a single integer value for your machine; in the current case, (n\*4)/4 which equals n, the length of the array!
 

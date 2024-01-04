@@ -94,7 +94,7 @@ Here's the usage for the basic data types.
 
 int main() {
     // Integer
-    int num = 42;
+    int num = 0;
 
     // Floating-point
     float price = 24.99;
