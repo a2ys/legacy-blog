@@ -92,3 +92,45 @@ int array[3];
 ```
 
 This is how an array of integers is declared. Note that the only thing that is changing is the data type of the array. In this example, the data type is `int`, whereas in the example above, the data type is `struct Student`.
+
+So, to access any element from the `students` array, we can do what we normally do in any other usual array. So, `students[0]` will get us the first element, `students[1]` will get us the second element, and so on. So to individually set the values for the elements, we can follow the below syntax.
+
+```c
+strcpy(students[0].name, "Alice");
+students[0].age = 20;
+
+strcpy(students[1].name, "Bob");
+students[1].age = 22;
+```
+
+This code puts the values Alice and 20 in the first element of the `students` array, and the values Bob and 22 in the second element. The following code thus prints the values accordingly.
+
+```c
+// Accessing and printing student information
+printf("First student name: %s\n", students[0].name);
+printf("Second student age: %d\n", students[1].age);
+```
+
+## Structures and Functions
+
+Structures can be passed as arguments to functions, allowing us to manipulate complex data structures efficiently.
+
+```c
+// Function to print details of a person
+void printPerson(struct Person p) {
+  printf("Name: %s\n", p.name);
+  printf("Age: %d\n", p.age);
+}
+```
+
+This function takes a `struct Person` as an argument, and prints its name and age.
+
+```c
+// Creating a 'Person' structure instance
+struct Person person1 = {"Alice", 25};
+
+// Calling the 'printPerson' function with 'person1' as argument
+printPerson(person1);
+```
+
+This block of code then calls the function with a new instance of the `struct Person` type.
