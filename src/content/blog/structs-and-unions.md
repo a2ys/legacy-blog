@@ -134,3 +134,133 @@ printPerson(person1);
 ```
 
 This block of code then calls the function with a new instance of the `struct Person` type.
+
+## Pointers to Structures
+
+Just like how we dynamically allocate memory for primitive data types like integer and float, we can use dynamic memory allocation on structures as well.
+
+```c
+struct Person {
+  char name[50];
+  int age;
+};
+```
+
+Here we first define a struct named `Person`. Now, to dynamically allocate memory for the `struct Person` on runtime, we can write the following syntax in the `main()` function. This syntax is similar to whatever we did before.
+
+```c
+struct Person *p = (struct Person *) malloc(sizeof(struct Person));
+```
+
+Here, `struct Person *p` declares a pointer variable `p` that can store memory addresses of `struct Person` objects. `malloc(sizeof(struct Person))` allocates memory dynamically on the heap, large enough to hold a `struct Person` object.
+
+The assignment `p = (struct Person *)malloc(sizeof(struct Person))` stores the allocated memory address in p.
+
+Now, to put the values for the children in the `struct Person *`, we use the following syntax.
+
+```c
+strcpy(p->name, name);
+p->age = age;
+```
+
+This same syntax is followed when accessing elements from a `struct Person *`. This arrow operator (`->`) is something you might have found new. This arrow operator is used to access members of a pointer variable. This is not the complete theory, but this is enough to make you understand the concept. You will understand this and use this more when you begin Object-Oriented Programming in C++.
+
+`p` is a pointer, so we need the `->` operator to access its members.
+
+`p->name` is equivalent to `(*p).name`. It dereferences `p` to get the actual `struct Person` object it points to and then uses the dot operator (`.`) to access the name member within that object.
+
+In simple terms, when you make a pointer to a structure object, you have to access the members either by dereferencing the pointer object and then accessing its members (`(*<pointer-to-a-struct>).<child>`), or by using the arrow operator (`<pointer-to-a-struct>-><child>`).
+
+The `strcpy` function copies the value of the `name` variable into the `name` member of the structure pointed to by `p`.
+
+Similarly, this line, `p->age = age`, assigns the value of the `age` variable to the `age` member of the structure pointed to by `p`.
+
+### Why not the Dot Operator (.)?
+
+The dot operator (`.`) can only be used to access members of structures or unions directly, not through pointers. In the given code, `p` is a pointer, not a `struct Person` object itself. Therefore, you cannot use `p.name` or `p.age` as they would be invalid. The `->` operator is the correct way to access members when using a pointer variable.
+
+## Bytes of knowledge: Alignment and Padding in Structures
+
+```c
+#include <stdio.h>
+
+struct Person {
+    char str[20];
+    int c;
+    char d;
+};
+
+int main() {
+    printf("Size of struct Person: %zu\n", sizeof(struct Person));
+    printf("Size of char[20]: %zu\n", sizeof(char[20]));
+    printf("Size of int: %zu\n", sizeof(int));
+    printf("Size of char: %zu\n", sizeof(char));
+
+    return 0;
+}
+
+```
+
+Try to run this code and check what happens. It would print 28 at the end, which might seem absurd.
+
+In theory,
+
+```c
+sizeof(struct Person) = sizeof(char str[20]) + sizeof(int) + sizeof(char) = 25 bytes
+```
+
+Practically, it is not 25 bytes but 28 bytes. The extra 3 bytes occupied by the struct is called padding.
+
+The size of the struct is not necessarily the sum of the sizes of its individual members due to alignment requirements. In C++, the compiler may add padding between the members to ensure proper alignment. This is done for performance reasons, as accessing aligned memory is generally faster.
+
+In this case, the `struct Person` contains an `int` (4 bytes), a `char` (1 byte), and a character array `str` of size 20 (20 bytes). Due to alignment, the compiler may add some padding after the `char` member to align the character array.
+
+Thus, the size of the struct is calculated as follows:
+
+```c
+int (4 bytes) + padding (currently 3 bytes to make the char align) + char (1 byte) + char[20] (20 bytes) = 28 bytes.
+```
+
+Alignment refers to the memory boundary at which a data type's address should be a multiple of.
+
+In simple terms, it ensures that data is stored in memory in a way that is efficient for the computer's architecture. Proper alignment is crucial for performance because accessing aligned memory is generally faster than accessing misaligned memory.
+
+Each data type has a natural alignment requirement, which is usually determined by the size of the data type. For example:
+
+- An `int` typically has an alignment requirement of 4 bytes.
+- A `double` often has an alignment requirement of 8 bytes.
+
+The alignment requirement is important because many computer architectures are optimized for accessing data at specific addresses that are aligned with the size of the data. If a data type is not aligned properly, it might require multiple memory accesses or additional processing, leading to slower performance.
+
+In C and C++ programming, the compiler automatically adds padding between structure members to ensure that each member is aligned according to its requirements. This padding helps to align subsequent members and the overall structure.
+
+In the `struct Person` structure, the compiler added padding to ensure that each member of the struct is properly aligned, which resulted in a larger overall size.
+
+Arrays, in general, don't introduce additional alignment requirements beyond the alignment of their element type. The alignment requirement of `char` is usually 1 byte. Therefore, in the struct, the `char[20]` array doesn't introduce additional alignment requirements, and no padding is added after it.
+
+It's important to note that alignment decisions can vary between different compilers and platforms. Compiler designers make choices based on a combination of factors, including performance optimization, memory access efficiency, and architectural considerations.
+
+## Unions: Versatility in Data Storage
+
+Unions allow us to store different data types in the same memory location, conserving memory and providing flexibility in data representation.
+
+```c
+union Data {
+  int i;
+  float f;
+  char str[20];
+};
+```
+
+This is how we define a union type in C. This union can either hold an integer, a float or a string.
+
+```c
+data.i = 10;
+printf("Integer value: %d\n", data.i);
+data.f = 3.14;
+printf("Float value: %f\n", data.f);
+strcpy(data.str, "Hello");
+printf("String value: %s\n", data.str);
+```
+
+In this example, as we assign values to its members, they occupy the same memory location, and only the most recently assigned value is kept, and all other previously assigned values are lost.
