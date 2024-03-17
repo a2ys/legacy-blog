@@ -264,3 +264,103 @@ printf("String value: %s\n", data.str);
 ```
 
 In this example, as we assign values to its members, they occupy the same memory location, and only the most recently assigned value is kept, and all other previously assigned values are lost.
+
+## Bytes of knowledge: Where do the lost values from a Union go?
+
+For this block and in the upcoming blocks of code, I'll use C++, as the syntax for a union is the same there. (and printing is easier. 😂)
+
+For a union, you know by now that all members share the same memory location. Accessing one member will overwrite the value of the others.
+
+Let's explore more into this by creating a union with the name `Value`.
+
+```c
+union Value
+{
+  int name;
+  double decimal;
+  char character;
+};
+```
+
+Now, you might have guessed what would be the output for this.
+
+```c
+// Create a union variable
+union Value myValue;
+
+// Assign values to the union members
+myValue.name = 0;
+cout << "Name: " << myValue.name << endl;
+
+myValue.decimal = 1.0;
+cout << "Decimal: " << myValue.decimal << endl;
+
+myValue.character = 'A';
+cout << "Character: " << myValue.character << endl;
+```
+
+But for the following lines of code, you might not be able to guess the answer.
+
+```c
+cout << "After setting character, Name: " << myValue.name << endl;
+cout << "After setting character, Decimal: " << myValue.decimal << endl;
+```
+
+The values are stored in the same memory location, so accessing one member will overwrite the others. So these prints may not be meaningful as the union members share the same memory. But you might wonder what actually happened here, and what happened to the values.
+
+Explaining it simply, when you write a value to one member of the union, it occupies the memory associated with that member. When you subsequently write to another member, it overwrites the memory associated with the first member. This is because all members of the union use the same memory space.
+
+And the garbage values are not some totally random or unrelated garbage values, it's just the computer doing what it is told.
+
+In simple terms, the following steps happen internally when you create a union and write to it, and then overwrite some value.
+
+1. When you create a union, the compiler allocates enough memory to hold the largest member of the union. This ensures that the union has enough space to accommodate any of its members.
+2. When you write a value to one member of the union, it is stored in the shared memory location allocated for that union. If you then write a value to another member, it will overwrite the contents of the shared memory location.
+3. Unlike structures, unions do not enforce type checking when you access their members. You, as the programmer, are responsible for ensuring that you interpret the values correctly based on the currently active member.
+
+Visually,
+
+1. Initially, the memory is empty.
+
+```diff
+  Memory Layout:
+  +-----------------------+
+  |                       |
+  |                       |
+  |                       |
+  +-----------------------+
+```
+
+2. The value `0` is stored in the shared memory location.
+
+```c
+  myValue.name = 0;
+```
+
+```diff
+  Memory Layout:
+  +-----------------------+
+  |          0            |
+  |                       |
+  |                       |
+  +-----------------------+
+```
+
+3. Now, the value `1.0` overwrites the memory that was previously holding `0`. The union's memory now represents the decimal member. The name value is lost.
+
+```c
+  myValue.decimal = 1.0;
+```
+
+```diff
+  Memory Layout:
+  +-----------------------+
+  |        1.0            |
+  |                       |
+  |                       |
+  +-----------------------+
+```
+
+This behavior makes unions a bit tricky to use, and they require careful handling to ensure that you interpret the data correctly based on the currently active member. They are typically used in situations where you need to conserve memory and are confident about the active member at any given time.
+
+Here, when you try to print `myValue.name`, the compiler will try to read what is there at the shared memory location and try to interpret it as an integer. There are some cases where it is able to do so, whereas in most cases, the computer will just
